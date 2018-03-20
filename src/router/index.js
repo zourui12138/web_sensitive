@@ -1,11 +1,13 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import Watermark from '~/modules/watermark/watermark'
+import Watermark from '~/modules/watermark'
+import CreateWatermark from '~/modules/watermark/createWatermark'
+import WatermarkTaskManage from '~/modules/watermark/watermarkTaskManage'
 // 数据脱敏
-import Sensitive from '~/modules/sensitive/sensitive'
+import Sensitive from '~/modules/sensitive'
 import CreateSensitive from '~/modules/sensitive/createSensitive'
-import TaskManage from '~/modules/sensitive/taskManage'
+import SensitiveTaskManage from '~/modules/sensitive/sensitiveTaskManage'
 import AlgorithmManage from '~/modules/sensitive/algorithmManage'
 import SensitiveWordsManage from '~/modules/sensitive/sensitiveWordsManage'
 
@@ -16,12 +18,24 @@ export default new Router({
     routes: [
         {// 路由重定向
             path: '/',
-            redirect: '/sensitive/taskManage'
+            redirect: '/sensitive/createSensitive'
         },
         {
             path: '/watermark',
             name: 'watermark',
-            component: Watermark
+            component: Watermark,
+            children: [
+                {
+                    path: '/watermark/createWatermark',
+                    name: 'createWatermark',
+                    component: CreateWatermark
+                },
+                {
+                    path: '/watermark/watermarkTaskManage',
+                    name: 'watermarkTaskManage',
+                    component: WatermarkTaskManage
+                }
+            ]
         },
         {
             path: '/sensitive',
@@ -34,9 +48,9 @@ export default new Router({
                     component: CreateSensitive
                 },
                 {
-                    path: '/sensitive/taskManage',
-                    name: 'taskManage',
-                    component: TaskManage
+                    path: '/sensitive/sensitiveTaskManage',
+                    name: 'sensitiveTaskManage',
+                    component: SensitiveTaskManage
                 },
                 {
                     path: '/sensitive/algorithmManage',

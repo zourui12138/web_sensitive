@@ -1,5 +1,5 @@
 <template>
-    <div class="taskManage">
+    <div class="watermarkTaskManage">
         <header>
             <el-select v-model="status" placeholder="请选择">
                 <el-option
@@ -47,7 +47,7 @@
 
 <script>
     export default {
-        name: "task-manage",
+        name: "watermark-task-manage",
         data() {
             return{
                 statusOptions: [
@@ -188,7 +188,7 @@
 </script>
 
 <style lang="scss" scoped>
-    .taskManage{
+    .watermarkTaskManage{
         background-color: #fff;
         padding: 20px;
         header{

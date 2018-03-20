@@ -49,16 +49,16 @@
             color: #fff;
         }
         .dataType_blockData h1{
-            background:transparent url('../../assets/img/blockData.png') no-repeat center 58px;
+            background:transparent url('../assets/img/blockData.png') no-repeat center 58px;
         }
         .dataType_database h1{
-            background:transparent url('../../assets/img/database.png') no-repeat center 57px;
+            background:transparent url('../assets/img/database.png') no-repeat center 57px;
         }
         .dataType_blockData:hover h1{
-            background:transparent url('../../assets/img/blockData_hover.png') no-repeat center 58px;
+            background:transparent url('../assets/img/blockData_hover.png') no-repeat center 58px;
         }
         .dataType_database:hover h1{
-            background:transparent url('../../assets/img/database_hover.png') no-repeat center 57px;
+            background:transparent url('../assets/img/database_hover.png') no-repeat center 57px;
         }
     }
 </style>

@@ -1,5 +1,5 @@
 <template>
-    <div class="createSensitive">
+    <div class="createWatermark">
         <ContentHeader/>
         <DataList></DataList>
         <ContentFooter/>
@@ -13,7 +13,7 @@
     import ContentFooter from '~/components/contentFooter'
 
     export default {
-        name: "create-sensitive",
+        name: "create-watermark",
         components: {DataType,DataList,ContentHeader,ContentFooter}
     }
 </script>

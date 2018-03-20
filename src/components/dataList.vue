@@ -107,10 +107,10 @@
                 padding-left: 40px;
             }
             .folder{
-                background: url('../../assets/img/folder_icon.png') no-repeat 0 center;
+                background: url('../assets/img/folder_icon.png') no-repeat 0 center;
             }
             .file{
-                background: url('../../assets/img/file_icon.png') no-repeat 0 center;
+                background: url('../assets/img/file_icon.png') no-repeat 0 center;
             }
             /*.container-scrollbar*/
             .container-scrollbar {

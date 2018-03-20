@@ -24,7 +24,7 @@
             position: absolute;
             width:75px;
             height:16px;
-            background: url('../../assets/img/back.png') no-repeat center;
+            background: url('../assets/img/back.png') no-repeat center;
             border-right: 1px solid #7a899d;
             top:13px;
             left:0;

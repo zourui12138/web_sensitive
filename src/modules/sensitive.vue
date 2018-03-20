@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="sensitive">
         <header class="header">
             <h1>智能数据脱敏</h1>
             <el-menu
@@ -12,7 +12,7 @@
                 router
                 active-text-color="#ffd04b">
                 <el-menu-item index="createSensitive">数据脱敏系统</el-menu-item>
-                <el-menu-item index="taskManage">任务管理</el-menu-item>
+                <el-menu-item index="sensitiveTaskManage">脱敏任务管理</el-menu-item>
                 <el-menu-item index="algorithmManage">脱敏算法管理</el-menu-item>
                 <el-menu-item index="sensitiveWordsManage">敏感词管理</el-menu-item>
             </el-menu>
@@ -44,14 +44,16 @@
 </script>
 
 <style lang="scss" scoped>
-    .header h1{
-        height: 59px;
-        line-height: 59px;
-        font-size: 20px;
-        color: #208e9d;
-    }
-    /*.container-scrollbar*/
-    .container-scrollbar {
-        height: calc(100% - 120px);
+    .sensitive{
+        .header h1{
+            height: 59px;
+            line-height: 59px;
+            font-size: 16px;
+            color: #208e9d;
+        }
+        /*.container-scrollbar*/
+        .container-scrollbar {
+            height: calc(100% - 120px);
+        }
     }
 </style>

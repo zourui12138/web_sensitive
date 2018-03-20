@@ -21,7 +21,7 @@
         background-color: #eceff2;
         padding:0 30px;
         span{
-            background: url('../../assets/img/error.png') no-repeat 0 center;
+            background: url('../assets/img/error.png') no-repeat 0 center;
             color: #f44c4c;
             font-size: 12px;
             padding-left: 30px;
