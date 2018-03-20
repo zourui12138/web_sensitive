@@ -46,6 +46,7 @@
             position: fixed;
             left: 0;
             top: 0;
+            z-index: 10;
             .logo{
                 width: calc(100%);
                 height: 100px;
