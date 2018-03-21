@@ -1,10 +1,10 @@
 <template>
     <div class="dataType clear">
-        <div class="dataType_blockData fl">
+        <div @click="callback('dataBlock')" class="dataType_blockData fl">
             <h1></h1>
             <p>块数据（文件）</p>
         </div>
-        <div class="dataType_database fl">
+        <div @click="callback('database')" class="dataType_database fl">
             <h1></h1>
             <p>数据库（MySQL）</p>
         </div>
@@ -13,14 +13,16 @@
 
 <script>
     export default {
-        name: "data-type"
+        name: "data-type",
+        props: ['callback']
     }
 </script>
 
 <style lang="scss" scoped>
     /*.dataType*/
     .dataType{
-        padding:0 328px;
+        width: 836px;
+        margin: auto;
         height:660px;
         background-color: #fff;
         div{
@@ -30,7 +32,7 @@
             background-color: #fafafa;
             color: #5a6174;
             cursor: pointer;
-            margin:170px 85px 0;
+            margin:170px 59px 0;
             transition: all .2s;
             h1{
                 height:182px;
@@ -41,7 +43,7 @@
             }
         }
         div:hover{
-            margin:136px 49px 0;
+            margin:136px 23px 0;
             padding:34px 36px;
             background-color: #26c5e5;
             border-color: #26c5e5;

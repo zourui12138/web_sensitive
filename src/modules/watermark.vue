@@ -17,7 +17,7 @@
                 <el-menu-item index="tracedTask">创建溯源任务</el-menu-item>
             </el-menu>
         </header>
-        <VuePerfectScrollbar v-scroll class="container-scrollbar"><router-view/></VuePerfectScrollbar>
+        <VuePerfectScrollbar v-scroll class="container-scrollbar"><div class="container"><router-view/></div></VuePerfectScrollbar>
     </div>
 </template>
 
@@ -54,6 +54,10 @@
         /*.container-scrollbar*/
         .container-scrollbar {
             height: calc(100% - 120px);
+        }
+        .container{
+            background-color: #fff;
+            padding: 20px;
         }
     }
 </style>

@@ -1,13 +1,14 @@
 <template>
     <div class="contentHeader">
-        <span>选择脱敏数据及装载位置</span>
-        <strong></strong>
+        <span>{{title}}</span>
+        <strong @click="callback"></strong>
     </div>
 </template>
 
 <script>
     export default {
-        name: "content-header"
+        name: "content-header",
+        props: ['callback','title']
     }
 </script>
 
@@ -20,6 +21,7 @@
         color: #7a899d;
         position: relative;
         border:1px solid #d0e0e4;
+        margin-bottom: 20px;
         strong{
             position: absolute;
             width:75px;

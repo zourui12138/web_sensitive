@@ -1,6 +1,6 @@
 <template>
     <div class="sensitiveWordsManage">
-        <header><el-button type="primary" @click="openDialog()">新增敏感词</el-button></header>
+        <header><el-button type="primary" @click="openDialog">新增敏感词</el-button></header>
         <section>
             <el-table
                 :data="tableData"
@@ -13,7 +13,7 @@
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <el-button type="primary" size="small">修改</el-button>
-                        <el-button type="primary" size="small">删除</el-button>
+                        <el-button type="primary" size="small" @click="deleteFun">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -31,6 +31,7 @@
             class="dialog"
             title="新增敏感词"
             :visible.sync="dialogVisible"
+            :before-close="closeDialog"
             width="465px">
             <div class="dialogContent">
                 <div class="clear">
@@ -46,8 +47,8 @@
                 </div>
             </div>
             <div slot="footer" class="dialog-footer">
-                <el-button @click="closeDialog('取消敏感词添加')">取 消</el-button>
-                <el-button type="primary" @click="closeDialog('敏感词添加成功')">确 定</el-button>
+                <el-button @click="closeDialog">取 消</el-button>
+                <el-button type="primary" @click="submitDialog">确 定</el-button>
             </div>
         </el-dialog>
     </div>
@@ -131,9 +132,24 @@
             openDialog() {
                 this.dialogVisible = true;
             },
-            closeDialog(arg) {
+            closeDialog() {
                 this.dialogVisible = false;
-                this.$message(arg);
+                this.$message({type: 'info', message: '已取消添加'});
+            },
+            submitDialog() {
+                this.dialogVisible = false;
+                this.$message({type: 'success', message: '添加成功'});
+            },
+            deleteFun() {
+                this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({type: 'success', message: '删除成功!'});
+                }).catch(() => {
+                    this.$message({type: 'info', message: '已取消删除'});
+                });
             }
         }
     }
@@ -141,8 +157,6 @@
 
 <style lang="scss" scoped>
     .sensitiveWordsManage{
-        background-color: #fff;
-        padding: 20px;
         header{
             .el-select{
                 margin-right: 20px;

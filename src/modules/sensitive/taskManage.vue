@@ -189,8 +189,6 @@
 
 <style lang="scss" scoped>
     .sensitiveTaskManage{
-        background-color: #fff;
-        padding: 20px;
         header{
             .el-select{
                 margin-right: 20px;

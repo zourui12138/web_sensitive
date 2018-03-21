@@ -11,7 +11,7 @@
                 <el-table-column label="操作">
                     <template slot-scope="scope">
                         <el-button type="primary" size="small">下载</el-button>
-                        <el-button type="primary" size="small">删除</el-button>
+                        <el-button type="primary" size="small" @click="deleteFun">删除</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -86,14 +86,25 @@
                     }
                 ]
             }
+        },
+        methods: {
+            deleteFun() {
+                this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
+                    confirmButtonText: '确定',
+                    cancelButtonText: '取消',
+                    type: 'warning'
+                }).then(() => {
+                    this.$message({type: 'success', message: '删除成功!'});
+                }).catch(() => {
+                    this.$message({type: 'info', message: '已取消删除'});
+                });
+            }
         }
     }
 </script>
 
 <style lang="scss" scoped>
     .watermarkRecordFile{
-        background-color: #fff;
-        padding: 20px;
         header{
             .el-select{
                 margin-right: 20px;
