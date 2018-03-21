@@ -11,8 +11,8 @@
                 text-color="#fff"
                 router
                 active-text-color="#ffd04b">
-                <el-menu-item index="createSensitive">数据脱敏系统</el-menu-item>
-                <el-menu-item index="sensitiveTaskManage">脱敏任务管理</el-menu-item>
+                <el-menu-item index="createSensitive">创建脱敏任务</el-menu-item>
+                <el-menu-item index="taskManage">脱敏任务管理</el-menu-item>
                 <el-menu-item index="algorithmManage">脱敏算法管理</el-menu-item>
                 <el-menu-item index="sensitiveWordsManage">敏感词管理</el-menu-item>
             </el-menu>

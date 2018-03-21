@@ -4,7 +4,7 @@
             <div class="logo"><img src="./assets/img/logo.png" alt=""></div>
             <ul>
                 <li @click="selectAsideNav('/sensitive/createSensitive')" :class="{ current : asideNav === '/sensitive/createSensitive' }"><i class="el-icon-refresh"></i>智能数据脱敏</li>
-                <li @click="selectAsideNav('/watermark/createWatermark')" :class="{ current : asideNav === '/watermark/createWatermark' }"><i class="el-icon-printer"></i>智能数据水印</li>
+                <li @click="selectAsideNav('/watermark/createWatermark')" :class="{ current : asideNav === '/watermark/createWatermark' }"><i class="el-icon-printer"></i>智能水印追溯</li>
             </ul>
         </aside>
         <router-view class="main"/>
