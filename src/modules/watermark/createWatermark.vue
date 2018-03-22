@@ -1,9 +1,9 @@
 <template>
     <div class="createWatermark">
-        <DataType v-show="dataTypeUI" :callback="toDataUI"/>
+        <DataType v-show="dataTypeUI" :callback="getDataType"/>
         <div v-show="dataUI">
             <ContentHeader title="请选择水印数据" :callback="toDataTypeUI"/>
-            <DataList title="水印数据" :data="sourceData"></DataList>
+            <DataList title="水印数据" :data="sourceData" listType="source"></DataList>
             <ContentFooter error="请选择水印数据" :btnObj="dataBtnObj"/>
         </div>
         <div class="result" v-show="resultUI">
@@ -67,98 +67,165 @@
                         btnIcon: 'center',
                     }
                 ],
-                sourceData: [
-                    {
-                        id: '1',
-                        label: '水印文件夹1',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: '1-1',
-                                label: '水印文件夹1-1',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: '1-1-1',
-                                        label: '水印文件1-1-1',
-                                        type: 'file'
-                                    },
-                                    {
-                                        id: '1-1-2',
-                                        label: '水印文件1-1-2',
-                                        type: 'file'
-                                    }
-                                ]
-                            },
-                            {
-                                id: '1-2',
-                                label: '水印文件1-2',
-                                type: 'file'
-                            }
-                        ]
-                    },
-                    {
-                        id: '2',
-                        label: '水印文件夹2',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: '2-1',
-                                label: '水印文件夹2-1',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: '2-1-1',
-                                        label: '水印文件2-1-1',
-                                        type: 'file'
-                                    },
-                                    {
-                                        id: '2-1-2',
-                                        label: '水印文件2-1-2',
-                                        type: 'file'
-                                    }
-                                ]
-                            },
-                            {
-                                id: '2-2',
-                                label: '水印文件2-2',
-                                type: 'file'
-                            }
-                        ]
-                    },
-                    {
-                        id: '3',
-                        label: '水印文件夹3',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: '3-1',
-                                label: '水印文件夹3-1',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: '3-1-1',
-                                        label: '水印文件3-1-1',
-                                        type: 'file'
-                                    },
-                                    {
-                                        id: '3-1-2',
-                                        label: '水印文件3-1-2',
-                                        type: 'file'
-                                    }
-                                ]
-                            },
-                            {
-                                id: '3-2',
-                                label: '水印文件3-2',
-                                type: 'file'
-                            }
-                        ]
-                    }
-                ]
+                dataType: null
+            }
+        },
+        computed: {
+            sourceData() {
+                let arr;
+                if(this.dataType === 'database'){
+                    arr = [
+                        {
+                            id: '1',
+                            label: '水印数据库1',
+                            type: 'database',
+                            children: [
+                                {
+                                    id: '1-1',
+                                    label: '水印表1-1',
+                                    type: 'table'
+                                },
+                                {
+                                    id: '1-2',
+                                    label: '水印表1-2',
+                                    type: 'table'
+                                }
+                            ]
+                        },
+                        {
+                            id: '2',
+                            label: '水印数据库2',
+                            type: 'database',
+                            children: [
+                                {
+                                    id: '2-1',
+                                    label: '水印表2-1',
+                                    type: 'table'
+                                },
+                                {
+                                    id: '2-2',
+                                    label: '水印表2-2',
+                                    type: 'table'
+                                }
+                            ]
+                        },
+                        {
+                            id: '3',
+                            label: '水印数据库3',
+                            type: 'database',
+                            children: [
+                                {
+                                    id: '3-1',
+                                    label: '水印表3-1',
+                                    type: 'table'
+                                },
+                                {
+                                    id: '3-2',
+                                    label: '水印表3-2',
+                                    type: 'table'
+                                }
+                            ]
+                        }
+                    ];
+                }else{
+                    arr = [
+                        {
+                            id: '1',
+                            label: '水印文件夹1',
+                            type: 'folder',
+                            children: [
+                                {
+                                    id: '1-1',
+                                    label: '水印文件夹1-1',
+                                    type: 'folder',
+                                    children: [
+                                        {
+                                            id: '1-1-1',
+                                            label: '水印文件1-1-1',
+                                            type: 'file'
+                                        },
+                                        {
+                                            id: '1-1-2',
+                                            label: '水印文件1-1-2',
+                                            type: 'file'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: '1-2',
+                                    label: '水印文件1-2',
+                                    type: 'file'
+                                }
+                            ]
+                        },
+                        {
+                            id: '2',
+                            label: '水印文件夹2',
+                            type: 'folder',
+                            children: [
+                                {
+                                    id: '2-1',
+                                    label: '水印文件夹2-1',
+                                    type: 'folder',
+                                    children: [
+                                        {
+                                            id: '2-1-1',
+                                            label: '水印文件2-1-1',
+                                            type: 'file'
+                                        },
+                                        {
+                                            id: '2-1-2',
+                                            label: '水印文件2-1-2',
+                                            type: 'file'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: '2-2',
+                                    label: '水印文件2-2',
+                                    type: 'file'
+                                }
+                            ]
+                        },
+                        {
+                            id: '3',
+                            label: '水印文件夹3',
+                            type: 'folder',
+                            children: [
+                                {
+                                    id: '3-1',
+                                    label: '水印文件夹3-1',
+                                    type: 'folder',
+                                    children: [
+                                        {
+                                            id: '3-1-1',
+                                            label: '水印文件3-1-1',
+                                            type: 'file'
+                                        },
+                                        {
+                                            id: '3-1-2',
+                                            label: '水印文件3-1-2',
+                                            type: 'file'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: '3-2',
+                                    label: '水印文件3-2',
+                                    type: 'file'
+                                }
+                            ]
+                        }
+                    ];
+                }
+                return arr;
             }
         },
         methods: {
+            getDataType(type) {
+                this.dataType = type;
+                this.toDataUI();
+            },
             hiddenAllUI() {
                 this.dataTypeUI = false;
                 this.dataUI = false;
@@ -168,10 +235,9 @@
                 this.hiddenAllUI();
                 this.dataTypeUI = true;
             },
-            toDataUI(type) {
+            toDataUI() {
                 this.hiddenAllUI();
                 this.dataUI = true;
-                console.log(type);
             },
             toResultUI() {
                 this.hiddenAllUI();

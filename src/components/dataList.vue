@@ -24,7 +24,7 @@
     export default {
         name: "data-list",
         components: {VuePerfectScrollbar},
-        props: ['title','data'],
+        props: ['title','data','listType'],
         data() {
             return{
                 currentNode : '暂无数据'
@@ -32,8 +32,12 @@
         },
         methods: {
             getCurrentNode(data) {
-                data.type === 'file' && (this.currentNode = data.label);
-                data.type === 'folder' && (this.currentNode = '暂无数据');
+                if(this.listType === 'source'){
+                    (data.type === 'file' || data.type === 'table') && (this.currentNode = data.label);
+                    (data.type === 'folder' || data.type === 'database') && (this.currentNode = '暂无数据');
+                }else if(this.listType === 'target'){
+                    this.currentNode = data.label;
+                }
             }
         }
     }
@@ -78,6 +82,12 @@
             }
             .file{
                 background: url('../assets/img/file_icon.png') no-repeat 0 center;
+            }
+            .database{
+                background: url('../assets/img/database_icon.png') no-repeat 0 center;
+            }
+            .table{
+                background: url('../assets/img/table_icon.png') no-repeat 0 center;
             }
             /*.container-scrollbar*/
             .container-scrollbar {

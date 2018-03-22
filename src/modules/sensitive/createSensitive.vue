@@ -1,11 +1,11 @@
 <template>
     <div class="createSensitive">
-        <DataType v-show="dataTypeUI" :callback="toDataUI"/>
+        <DataType v-show="dataTypeUI" :callback="getDataType"/>
         <div v-show="dataUI">
             <ContentHeader title="请选择脱敏数据以及装载位置" :callback="toDataTypeUI"/>
             <el-row :gutter="20">
-                <el-col :span="12"><DataList title="脱敏数据" :data="sourceData"></DataList></el-col>
-                <el-col :span="12"><DataList title="装载位置" :data="targetData"></DataList></el-col>
+                <el-col :span="12"><DataList title="脱敏数据" :data="sourceData" listType="source"></DataList></el-col>
+                <el-col :span="12"><DataList title="装载位置" :data="targetData" listType="target"></DataList></el-col>
             </el-row>
             <ContentFooter error="请选择脱敏数据(装载位置)" :btnObj="dataBtnObj"/>
         </div>
@@ -119,95 +119,6 @@
                         btnIcon: 'center',
                     }
                 ],
-                sourceData: [
-                    {
-                        id: '1',
-                        label: '脱敏文件夹1',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: '1-1',
-                                label: '脱敏文件夹1-1',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: '1-1-1',
-                                        label: '脱敏文件1-1-1',
-                                        type: 'file'
-                                    },
-                                    {
-                                        id: '1-1-2',
-                                        label: '脱敏文件1-1-2',
-                                        type: 'file'
-                                    }
-                                ]
-                            },
-                            {
-                                id: '1-2',
-                                label: '脱敏文件1-2',
-                                type: 'file'
-                            }
-                        ]
-                    },
-                    {
-                        id: '2',
-                        label: '脱敏文件夹2',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: '2-1',
-                                label: '脱敏文件夹2-1',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: '2-1-1',
-                                        label: '脱敏文件2-1-1',
-                                        type: 'file'
-                                    },
-                                    {
-                                        id: '2-1-2',
-                                        label: '脱敏文件2-1-2',
-                                        type: 'file'
-                                    }
-                                ]
-                            },
-                            {
-                                id: '2-2',
-                                label: '脱敏文件2-2',
-                                type: 'file'
-                            }
-                        ]
-                    },
-                    {
-                        id: '3',
-                        label: '脱敏文件夹3',
-                        type: 'folder',
-                        children: [
-                            {
-                                id: '3-1',
-                                label: '脱敏文件夹3-1',
-                                type: 'folder',
-                                children: [
-                                    {
-                                        id: '3-1-1',
-                                        label: '脱敏文件3-1-1',
-                                        type: 'file'
-                                    },
-                                    {
-                                        id: '3-1-2',
-                                        label: '脱敏文件3-1-2',
-                                        type: 'file'
-                                    }
-                                ]
-                            },
-                            {
-                                id: '3-2',
-                                label: '脱敏文件3-2',
-                                type: 'file'
-                            }
-                        ]
-                    }
-                ],
                 targetData: [
                     {
                         id: '1',
@@ -245,10 +156,166 @@
                             }
                         ]
                     }
-                ]
+                ],
+                dataType: null
+            }
+        },
+        computed: {
+            sourceData() {
+                let arr;
+                if(this.dataType === 'database'){
+                    arr = [
+                        {
+                            id: '1',
+                            label: '脱敏数据库1',
+                            type: 'database',
+                            children: [
+                                {
+                                    id: '1-1',
+                                    label: '脱敏表1-1',
+                                    type: 'table'
+                                },
+                                {
+                                    id: '1-2',
+                                    label: '脱敏表1-2',
+                                    type: 'table'
+                                }
+                            ]
+                        },
+                        {
+                            id: '2',
+                            label: '脱敏数据库2',
+                            type: 'database',
+                            children: [
+                                {
+                                    id: '2-1',
+                                    label: '脱敏表2-1',
+                                    type: 'table'
+                                },
+                                {
+                                    id: '2-2',
+                                    label: '脱敏表2-2',
+                                    type: 'table'
+                                }
+                            ]
+                        },
+                        {
+                            id: '3',
+                            label: '脱敏数据库3',
+                            type: 'database',
+                            children: [
+                                {
+                                    id: '3-1',
+                                    label: '脱敏表3-1',
+                                    type: 'table'
+                                },
+                                {
+                                    id: '3-2',
+                                    label: '脱敏表3-2',
+                                    type: 'table'
+                                }
+                            ]
+                        }
+                    ];
+                }else{
+                    arr = [
+                        {
+                            id: '1',
+                            label: '脱敏文件夹1',
+                            type: 'folder',
+                            children: [
+                                {
+                                    id: '1-1',
+                                    label: '脱敏文件夹1-1',
+                                    type: 'folder',
+                                    children: [
+                                        {
+                                            id: '1-1-1',
+                                            label: '脱敏文件1-1-1',
+                                            type: 'file'
+                                        },
+                                        {
+                                            id: '1-1-2',
+                                            label: '脱敏文件1-1-2',
+                                            type: 'file'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: '1-2',
+                                    label: '脱敏文件1-2',
+                                    type: 'file'
+                                }
+                            ]
+                        },
+                        {
+                            id: '2',
+                            label: '脱敏文件夹2',
+                            type: 'folder',
+                            children: [
+                                {
+                                    id: '2-1',
+                                    label: '脱敏文件夹2-1',
+                                    type: 'folder',
+                                    children: [
+                                        {
+                                            id: '2-1-1',
+                                            label: '脱敏文件2-1-1',
+                                            type: 'file'
+                                        },
+                                        {
+                                            id: '2-1-2',
+                                            label: '脱敏文件2-1-2',
+                                            type: 'file'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: '2-2',
+                                    label: '脱敏文件2-2',
+                                    type: 'file'
+                                }
+                            ]
+                        },
+                        {
+                            id: '3',
+                            label: '脱敏文件夹3',
+                            type: 'folder',
+                            children: [
+                                {
+                                    id: '3-1',
+                                    label: '脱敏文件夹3-1',
+                                    type: 'folder',
+                                    children: [
+                                        {
+                                            id: '3-1-1',
+                                            label: '脱敏文件3-1-1',
+                                            type: 'file'
+                                        },
+                                        {
+                                            id: '3-1-2',
+                                            label: '脱敏文件3-1-2',
+                                            type: 'file'
+                                        }
+                                    ]
+                                },
+                                {
+                                    id: '3-2',
+                                    label: '脱敏文件3-2',
+                                    type: 'file'
+                                }
+                            ]
+                        }
+                    ];
+                }
+                return arr;
             }
         },
         methods: {
+            getDataType(type) {
+                this.dataType = type;
+                this.toDataUI();
+            },
             hiddenAllUI() {
                 this.dataTypeUI = false;
                 this.dataUI = false;
@@ -257,12 +324,12 @@
             },
             toDataTypeUI() {
                 this.hiddenAllUI();
+                this.dataType = null;
                 this.dataTypeUI = true;
             },
-            toDataUI(type) {
+            toDataUI() {
                 this.hiddenAllUI();
                 this.dataUI = true;
-                console.log(type);
             },
             toAlgorithmUI() {
                 this.hiddenAllUI();
