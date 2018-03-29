@@ -4,7 +4,6 @@
             <h1>智能数据脱敏</h1>
             <el-menu
                 :default-active="sensitiveNav"
-                class="el-menu-demo"
                 mode="horizontal"
                 @select="handleSelect"
                 background-color="#208e9d"
