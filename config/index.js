@@ -23,7 +23,7 @@ module.exports = {
         }
         */
         // 下面是dev-server的端口号，可以自行更改
-        host: 'localhost',
+        host: '0.0.0.0',
         port: 9000,
         // 下面表示是否自定代开浏览器
         autoOpenBrowser: false,
